@@ -1,0 +1,15 @@
+#no data .csv
+*.csv
+
+#no checkpoint
+.ipynb_checkpoints/*
+
+#no secrets dir
+/secrets/
+
+#no _cache_
+*__pycache__*
+
+#DS
+.DS_Store
+
