@@ -1,21 +1,18 @@
 import sys
 n = int(sys.stdin.readline())
-sum_value=[]
-idx_list = []
-for _ in range(n):
+sum_value=[[0]*(n+1) for _ in range(2)]
+for i in range(n):
     idx,value = map(int,sys.stdin.readline().split())
-    idx_list.append(idx)
-    sum_value.append(value)
+    sum_value[idx-1][i+1] = value
 
+for i in range(n):
+    for idx in range(2):
+        sum_value[idx][i+1] += sum_value[idx][i]
 q = int(sys.stdin.readline())
-for _ in range(q):
+for i in range(q):
+    answer_list=[]
     start,end = map(int,sys.stdin.readline().split())
-    num=start-1
-    answer=[0,0]
-    while num < end:
-        if idx_list[num]==1:
-            answer[0]+=sum_value[num]
-        elif idx_list[num]==2:
-            answer[1]+=sum_value[num]
-        num+=1
-    print(' '.join(map(str,answer)))
+    for idx in range(2):
+        answer=sum_value[idx][end] - sum_value[idx][start-1]
+        answer_list.append(answer)
+    print(' '.join(map(str,answer_list)))
