@@ -6,5 +6,4 @@ RUN apt-get update && \
     sudo apt-get install -y \
     python3.7 \
     apache2
-
-CMD [ "sudo", "service", "apache2", "start"]
+CMD [ "sudo", "service", "apache2", "restart"]
