@@ -16,6 +16,8 @@ services:
     container_name: app_server
     ports: 
       - 80:80
+    volumes:
+      - apache/html: /var/www/html
     networks: 
       - wsgi_net
   
