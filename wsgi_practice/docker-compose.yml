@@ -17,8 +17,7 @@ services:
     ports: 
       - 80:80
     volumes:
-      - ./apache/html/:/var/www/html
-      - ./apache/etc/conf/httpd.conf:/etc/apache2/apache2.conf
+      - ./apache/etc/conf/apache2.conf:/etc/apache2/apache2.conf
     networks: 
       - wsgi_net
   
