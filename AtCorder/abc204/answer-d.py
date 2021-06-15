@@ -1,15 +1,13 @@
-import sys
-n = int(sys.stdin.readline())
-t = list(map(int, input().split()))
-dp=1
-for x in t:
-    dp|=dp<<x
+import numpy as np
  
-ans=10**18
-sumt=sum(t)
-t.sort()
-for i in range(sumt//2,sumt+1):
-    if (dp>>i)&1:
-        ans=min(ans,max(i,sumt-i))
-        print(ans)
-        break
+N = int(input())
+T = list(map(int, input().split()))
+S = np.sum(T)
+DP = np.zeros(S//2+1,dtype=np.bool)
+DP[-1] = 1
+
+for i in range(N):
+    if S//2+1-T[i] < 0: 
+        continue
+    DP[:S//2+1-T[i]] |= DP[T[i]:] #numpyを用いていっぺんに遷移
+print(S-S//2+np.argmax(DP))
