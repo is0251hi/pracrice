@@ -1,5 +1,4 @@
 import sys
-from typing import NamedTuple
 N,Y = map(int,sys.stdin.readline().split())
 boolean=False
 def calc(x,y):
