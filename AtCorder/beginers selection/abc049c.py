@@ -1,5 +1,5 @@
 import sys
-N = sys.stdin.readline()
+N = sys.stdin.readline().replace('\n','')
 string_list = ["dream","dreamer", "erase", "eraser"]
 max_cnt=len(N)
 def dfs(num):
@@ -8,7 +8,6 @@ def dfs(num):
     for s in string_list:
         if num+len(s)>max_cnt:
             continue
-        print(N[num:num+len(s)])
         if s in N[num:num+len(s)]:
             num+=len(s)
             check=dfs(num)
