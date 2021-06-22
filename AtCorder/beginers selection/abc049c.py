@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(1000000)
 N = sys.stdin.readline().replace('\n','')
 string_list = ["dream","dreamer", "erase", "eraser"]
 max_cnt=len(N)
@@ -20,6 +21,6 @@ def dfs(num):
     return True
 check=dfs(0)
 if check:
-    print("Yes")
+    print("YES")
 else:
-    print("No")
+    print("NO")
