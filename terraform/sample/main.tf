@@ -1,6 +1,16 @@
+locals {
+    INSTANCE_TYPE = "t3.micro"
+    REGION = "ap-northeast-1"
+    AMI = "ami-06631ebafb3ae5d34"
+}
+
+provider "aws" {
+    region = local.REGION
+}
+
 resource "aws_instance" "example" {
-    ami = "ami-06631ebafb3ae5d34"
-    instance_type = "t3.micro"
+    ami = local.AMI
+    instance_type = local.INSTANCE_TYPE
     tags = {
         Name = "example"
     }
@@ -9,4 +19,8 @@ resource "aws_instance" "example" {
         yum install -y httpd
         sytemctl start httpd.service
     EOF
+}
+
+output "example_instance_id" {
+    value = aws_instance.example.id
 }
