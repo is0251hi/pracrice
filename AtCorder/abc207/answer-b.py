@@ -1,14 +1,6 @@
-import sys
-blue,b,c,d= map(int,sys.stdin.readline().split())
-red=0
-if b>c:
-    num=-1
-else:
-    num=0
-    while 1:
-        if blue<=(red*d):
-            break
-        num+=1
-        blue+=b
-        red+=c
-print(num)
+A,B,C,D = map(int,input().split())
+ans = -1
+diff = C*D-B
+if 0 < diff:
+    ans = (A+diff-1)//diff
+print(ans)
