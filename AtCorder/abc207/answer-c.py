@@ -8,7 +8,6 @@ for i in range(N):
     if t>=3:
         l+=0.1
     n_list.append([l,r])
-
 for i in range(N):
     for j in range(i+1,N):
         answer += (max(n_list[i][0],n_list[j][0]) <= min(n_list[i][1],n_list[j][1]))
