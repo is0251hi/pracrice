@@ -15,11 +15,7 @@ resource "aws_instance" "example" {
     tags = {
         Name = "example"
     }
-    user_data = <<EOF
-        #!/bin/bash
-        yum install -y httpd
-        sytemctl start httpd.service
-    EOF
+    user_data = file("./user_data.sh")
 }
 
 
