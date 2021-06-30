@@ -18,7 +18,6 @@ resource "aws_instance" "example" {
     user_data = file("./user_data.sh")
 }
 
-
 resource "aws_security_group" "example_ec2_group" {
     name = "example_ec2"
 
