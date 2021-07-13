@@ -8,6 +8,6 @@ while(True): # 入力数が決まってないため無限ループを作る
             if c==a or c==b or (c<1 and c>n):
                 continue
             if(a+b+c == x): 
-                res += 1 # 条件を満たす時結果をインクリメント。 ++res としないように
+                res += 1 
 
     print(res)
