@@ -1,14 +1,22 @@
-from collections import deque
 n,k=map(int,input().split())
 c_list=list(map(int,input().split()))
-temp=deque()
+temp={}
 for i in range(0,k):
-    temp.append(c_list[i])
-    max_num=len(set(temp))
+    if c_list[i] in temp:
+        temp[c_list[i]]+=1
+    else:
+        temp[c_list[i]]=1
+    max_num=len(temp)
 for j in range(k,n):
-    temp.append(c_list[j])
-    temp.popleft()
-    num=len(set(temp))
-    if num>max_num:
-        max_num=num
+    if c_list[j] in temp:
+        temp[c_list[j]]+=1
+    else:
+        temp[c_list[j]]=1
+    if c_list[j-k] in temp:
+        if temp[c_list[j-k]]==1:
+            temp.pop(c_list[j-k])
+        else:
+            temp[c_list[j-k]]-=1
+    num=len(temp)
+    max_num=max(num,max_num)
 print(max_num)
