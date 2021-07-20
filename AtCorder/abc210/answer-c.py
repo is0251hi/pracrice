@@ -12,7 +12,7 @@ for j in range(k,n):
         temp[c_list[j]]+=1
     else:
         temp[c_list[j]]=1
-    if c_list[j-k] in temp:
+    if c_list[j-k] in temp:#in list遅いらしい->set,dictにすると良い
         if temp[c_list[j-k]]==1:
             temp.pop(c_list[j-k])
         else:
