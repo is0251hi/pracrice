@@ -3,7 +3,6 @@ n=int(input())
 ls=[]
 for i in range(n):
     ls.append(tuple(map(int,input().split())))
-ls.sort()
 st = set(ls)
 ans = 0
 for p1, p2 in combinations(ls, 2): # 組み合わせでOK
