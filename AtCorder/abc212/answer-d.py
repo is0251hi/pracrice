@@ -1,28 +1,15 @@
+import heapq
 def main():
     q=int(input())
-    ans=0
-    x_dict={}
+    cnt=0
+    x_list=[]
     for _ in range(q):
-        p,*x_l=map(int,input().split())
-        if p==1:
-            x=x_l[0]
-            if x in x_dict:
-                x_dict[x]+=1
-            else:
-                x_dict[x]=1
-        elif p==2:
-            x=x_l[0]
-            temp={}
-            for key,value in x_dict.items():
-                temp[key+x]=value
-            x_dict=temp
-            del temp
+        p=list(input().split())
+        if p[0]=='1':
+            heapq.heappush(x_list,int(p[1])-cnt)
+        elif p[0]=='2':
+            cnt+=int(p[1])
         else:
-            ans=min(x_dict)
-            if x_dict[ans]==1:
-                del x_dict[ans]
-            else:
-                x_dict[ans]-=1
-            print(ans)
+            print(heapq.heappop(x_list)+cnt)
 if __name__=='__main__':
     main()
