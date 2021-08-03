@@ -1,20 +1,18 @@
 def calc(x,p):
-    return (x+p/(2**(x/1.5)))
+    return x+p*2**(-x/1.5)
+def is_high(i,j,p):
+    return calc(i,p)>=calc(j,p)
 def main():
-    p=(input())
+    p=float(input())
     left=0
-    right=p-1
-    ans=0
-    while left<right:
-        mid=right//2
-        temp=calc(mid,p)
-        if ans==0:
-            ans=temp
-        elif temp<=ans:
-            left=mid+1
-            ans=temp
-        elif temp>ans:
-            right=mid
-    print(ans)
+    right=p
+    while right-left>1*(10**-9):
+        mid_right=(right*2+left)/3
+        mid_left=(right+left*2)/3
+        if is_high(mid_right,mid_left,p):
+            right=mid_right
+        else:
+            left=mid_left
+    print(calc(mid_right,p))
 if __name__=='__main__':
     main()
