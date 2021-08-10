@@ -12,12 +12,13 @@ def dfs_add(num):
     while stack:
         idx=stack[-1]
         if not idx in part:
+            idx=stack.pop(-1)
             continue
-        for i in range(len(part[idx])):
-            if seen[part[idx][i]-1]==0:
-                seen[part[idx][i]-1]=1
-                ans[part[idx][i]-1]+=num
-                stack.append(part[idx][i])
+        for part_idx in part[idx]:
+            if seen[part_idx-1]==0:
+                seen[part_idx-1]=1
+                ans[part_idx-1]+=num
+                stack.append(part_idx)
                 break
         else:
             idx=stack.pop(-1)
