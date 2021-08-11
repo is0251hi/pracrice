@@ -12,7 +12,7 @@ for _ in range(n-1):
 for _ in range(q):
     p,x=map(int,sys.stdin.readline().split())
     ans[p]+=x
-def dfs_add():
+def dfs():
     seen[1]=1
     stack.append(1)
     while stack:
@@ -25,5 +25,5 @@ def dfs_add():
                 seen[part_idx]=1
                 ans[part_idx]+=ans[idx]
                 stack.append(part_idx)
-dfs_add()
+dfs()
 print(*ans[1:])
