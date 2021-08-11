@@ -1,33 +1,29 @@
 import sys
+from collections import deque
 n,q=map(int,sys.stdin.readline().split())
-part={}
-ans=[0]*n
+part={i:deque() for i in range(1,n+1)}
+ans=[0]*(n+1)
+seen=[0]*(n+1)
+stack=[]
 for _ in range(n-1):
     a,b=map(int,sys.stdin.readline().split())
-    if a in part:
-        part[a].append(b)
-    else:
-        part[a]=[b]
-def dfs_add(num):
-    while stack:
-        idx=stack[-1]
-        if not idx in part:
-            idx=stack.pop(-1)
-            continue
-        for part_idx in part[idx]:
-            if seen[part_idx-1]==0:
-                seen[part_idx-1]=1
-                ans[part_idx-1]+=num
-                stack.append(part_idx)
-                break
-        else:
-            idx=stack.pop(-1)
+    part[a].append(b)
+    part[b].append(a)
 for _ in range(q):
-    stack=[]
-    seen=[0]*n
-    p,num=map(int,sys.stdin.readline().split())
-    ans[p-1]+=num
-    stack.append(p)
-    seen[p-1]=1
-    dfs_add(num)
-print(' '.join(list(map(str,ans))))
+    p,x=map(int,sys.stdin.readline().split())
+    ans[p]+=x
+def dfs_add():
+    seen[1]=1
+    stack.append(1)
+    while stack:
+        idx=stack.pop()
+        if not idx in part:
+            continue
+        for _ in range(len(part[idx])):
+            part_idx = part[idx].popleft()
+            if seen[part_idx]==0:
+                seen[part_idx]=1
+                ans[part_idx]+=ans[idx]
+                stack.append(part_idx)
+dfs_add()
+print(*ans[1:])
