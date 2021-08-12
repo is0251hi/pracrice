@@ -22,8 +22,8 @@ def bfs():
                 queue.append(tree_idx)
                 ans[tree_idx]=ans[idx]+1
 bfs()
-for i,a in enumerate(ans):
-    if i>1 and a==0:
-        print(i,-1)
+for i,a in enumerate(ans[1:]):
+    if i+1>1 and a==0:
+        print(i+1,-1)
     else:
-        print(i,a)
+        print(i+1,a)
