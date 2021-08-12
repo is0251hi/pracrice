@@ -16,7 +16,7 @@ def dfs():
     seen[1]=1
     stack.append(1)
     while stack:
-        idx=stack.pop()
+        idx=stack.pop(0)
         if not idx in part:
             continue
         for _ in range(len(part[idx])):
