@@ -4,14 +4,19 @@ r,c=map(int,sys.stdin.readline().split())
 sy,sx=map(int,sys.stdin.readline().split())
 gy,gx=map(int,sys.stdin.readline().split())
 road=[]
-seen=[[0]*c for _ in range(r)]
+seen=[[0]*(c+1) for _ in range(r+1)]
 check_l=[(-1,0),(0,-1),(1,0),(0,1)]
-cnt=[[0]*c for _ in range(r)]
+cnt=[[0]*(c+1) for _ in range(r+1)]
 queue=deque()
 for _ in range(r):
-    c=sys.stdin.readline().split()
-    c_l=[0 if a=='.' else 1 for a in c]
-    road.append(c_l)
+    pixels=sys.stdin.readline()
+    b_l=[]
+    for pixel in pixels: 
+        if pixel=='#':
+            b_l.append(1)
+        else:
+            b_l.append(0)
+    road.append(b_l)
 
 def bfs():
     seen[sy][sx]=1
@@ -24,9 +29,10 @@ def bfs():
         for check in check_l:
             check_y=check[1]+y
             check_x=check[0]+x
-            if seen[check_y][check_x]==0 and road[check_y][check_x]==0:
+            if 0<=check_y and check_y<r and 0<=check_x and check_x<c and seen[check_y][check_x]==0 and road[check_y-1][check_x-1]==0:
                 seen[check_y][check_x]=1
                 cnt[check_y][check_x]=cnt[y][x]+1
                 queue.append((check_x,check_y))
+bfs()
 print(cnt[gy][gx])
 
