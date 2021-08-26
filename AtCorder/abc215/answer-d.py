@@ -1,4 +1,4 @@
-#倍数であるか素因数であるか
+#素数かつA_list内の数値を除く、除いた値の倍数も除く
 n,m=map(int,input().split())
 a_l=list(map(int,input().split()))
 limit_num=max(max(a_l),m)
