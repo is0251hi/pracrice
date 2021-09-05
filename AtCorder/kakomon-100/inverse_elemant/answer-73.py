@@ -1,3 +1,4 @@
+#https://atcoder.jp/contests/abc145/tasks/abc145_d
 def nCr(n,r,m=10**9+7):
     re=1
     for i in range(r):
