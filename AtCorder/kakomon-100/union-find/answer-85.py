@@ -3,10 +3,10 @@ class UnionFind():
     def __init__(self,n):
         self.n=n
         self.parents=[-1]*n
-    def find(self,x):#親返す
+    def find(self,x):#根返す
         if self.parents[x]<0:
             return x
-        else:
+        else:#参照先が根でなければ、根につなぎかえる
             self.parents[x] = self.find(self.parents[x])
             return self.parents[x]
     def union(self,x,y):
