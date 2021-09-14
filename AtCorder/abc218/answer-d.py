@@ -13,5 +13,5 @@ for i in d.values:
             e[(i[j],i[k])]=e.get((i[j],i[k]), 0)+1#yの値の組が同じ要素を出す
 ans=0
 for i in e.values():
-    ans+=i*(i-1)//2
+    ans+=i*(i-1)//2#nC2
 print(ans)
