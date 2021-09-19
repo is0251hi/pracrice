@@ -22,7 +22,7 @@ for ans in ans_l:
 ###別解####
 #指定された文字列を数字ではなくabcに対応させる辞書を作る方法もある
 #for i in range(26):
-#    nxt = chr(i + ord('a'))  # 英小文字の前から数えてi番目（aを0番目とする）
+#    nxt = chr(i + ord('a'))  # 英小文字の前から数えてi番目（aを0番目とする）ord()でユニコードにして加算
 #    D[X[i]] = nxt
 #for char in s_l:
 #    T += D[char]
