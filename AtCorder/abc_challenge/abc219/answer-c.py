@@ -18,3 +18,11 @@ for s in s_l:
 ans_l=sorted(s_num.items(),key=lambda x:x[1])
 for ans in ans_l:
     print(ans[0])
+
+###別解####
+#指定された文字列を数字ではなくabcに対応させる辞書を作る方法もある
+#for i in range(26):
+#    nxt = chr(i + ord('a'))  # 英小文字の前から数えてi番目（aを0番目とする）
+#    D[X[i]] = nxt
+#for char in s_l:
+#    T += D[char]
