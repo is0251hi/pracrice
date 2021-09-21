@@ -1,33 +1,27 @@
-n=int(input())
-x,y=map(int,input().split())
-ben_l=[]
-for _ in range(n):
-    a,b=map(int,input().split())
-    ben_l.append((a,b))
-ben_a=sorted(ben_l,key=lambda x:x[0])
-ben_b=sorted(ben_l,key=lambda x:x[0])
-a_ch=0
-b_ch=0
-for ben in ben_l:
-    a_ch+=ben[0]
-    b_ch+=ben[1]
-if a_ch<x or b_ch<y:
-    print(-1)
-    exit()
-con_check=True
-sum_a=0
-sum_b=0
-idx=0
-while con_check:
-    idx+=1
-    if x>y:
-        a,b=ben_a.pop(-1)
-        sum_a+=a
-        sum_b+=b
-    else:
-        a,b=ben_b.pop(-1)
-        sum_a+=a
-        sum_b+=b
-    if sum_a>=x and sum_b>=y:
-        con_check=False
-print(idx)
+def main():
+    INF=1000
+    N=int(input())
+    X,Y=map(int,input().split())
+    dp=[[[INF]*(Y+1) for _ in range(X+1)]for _ in range(N+1)]
+    #dp[弁当の個数][xの値][yの値]=弁当の個数が使える時、x,yにするのに最小の個数
+
+    mat=[]
+    for _ in range(N):
+        a,b=map(int,input().split())
+        mat.append((a,b))
+    
+    dp[0][0][0]=0
+
+    for i in range(N):#個数
+        x,y=mat[i]
+        for j in range(X+1):#
+            jj=min(j+x,X)
+            for k in range(Y+1):
+                dp[i+1][j][k]=min(dp[i+1][j][k],dp[i][j][k])
+                kk=min(k+y,Y)
+                dp[i+1][jj][kk]=min(dp[i+1][jj][kk],dp[i][j][k]+1)
+
+    print(dp[N][X][Y] if dp[N][X][Y]<INF else -1)
+
+if __name__=='__main__':
+    main()
