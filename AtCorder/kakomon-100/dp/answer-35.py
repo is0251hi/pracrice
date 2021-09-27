@@ -6,7 +6,7 @@ for i in range(n):
     items.append((v,w))
 
 for idx,item in enumerate(items):
-    for capacity in range(1,w+1):
+    for capacity in range(w+1):
         previous_item_value=dp[idx][capacity]
         weight=item[1]
         if capacity>=weight:
@@ -16,3 +16,10 @@ for idx,item in enumerate(items):
         else:
             dp[idx+1][capacity]=previous_item_value
 print(dp)
+ans=[]
+capacity=w
+for i in range(len(items),0,-1):
+    if dp[i-1][capacity]!=dp[i][capacity]:
+        ans.append(items[i-1])
+        capacity-=items[i-1][1]
+print(ans)
