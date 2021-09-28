@@ -15,12 +15,10 @@ for idx,item in enumerate(items):#重さごとに一つ前の商品と選択し�
             dp[idx+1][capacity]=max(value_item_weight+value,previous_item_value)
         else:
             dp[idx+1][capacity]=previous_item_value
-    print(dp)
-print(dp)
-ans=[]
+ans=0
 capacity=max_capacity
 for i in range(len(items),0,-1):
     if dp[i-1][capacity]!=dp[i][capacity]:
-        ans.append(items[i-1])
+        ans+=(items[i-1][0])
         capacity-=items[i-1][1]
 print(ans)
