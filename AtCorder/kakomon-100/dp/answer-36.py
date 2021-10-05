@@ -1,13 +1,12 @@
 n,capacity=map(int,input().split())
 items=[]
-dp=[[0]*(capacity+1) for _ in range(len(items)+1)]
+dp=[0]*(capacity+1)
 for _ in range(n):
     v,w=map(int,input().split())
     items.append((v,w))
 for idx,item in enumerate(items):
-    for capa in range(capacity+1):
-        privious=dp[idx][capa]
-        if item[1]>capa or items[idx-1]>capa:
-            dp[idx+1][capa]=privious
-        else:
-            
+    v=item[0]
+    w=item[1]
+    for j in range(w,capacity+1):
+        dp[j]=max(dp[j-w]+v, dp[j])
+print(max(dp))
