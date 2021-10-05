@@ -8,5 +8,5 @@ for idx,item in enumerate(items):
     v=item[0]
     w=item[1]
     for j in range(w,capacity+1):
-        dp[j]=max(dp[j-w]+v, dp[j])
+        dp[j]=max(dp[j-w]+v, dp[j])#重さに対する最適なアイテムを記録していく
 print(max(dp))
