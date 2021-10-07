@@ -4,9 +4,9 @@ q=int(input())
 m_l=list(map(int,input().split()))
 
 for m in m_l:
-    for bit in range(1<<n):
+    for bit in range(1<<n):#全パターン
         ans=0
-        for i in range(n):
+        for i in range(n):#列挙した値がパターンに含まれるか
             if bit&(1<<i):
                 ans+=a_l[i]
         if m==ans:
