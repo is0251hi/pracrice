@@ -22,7 +22,7 @@ class Deck:
         #self.deck_list.append(card.number_list)
         for sign in card.sign_list:
             for number in card.number_list:
-                self.deck_list.append([sign,number])#この形はいける？
+                self.deck_list.append([sign,number])
         
         if self.joker_use==True:
             self.deck_list.append([card.joker,0])
@@ -32,7 +32,7 @@ class Deck:
 
     def distribute_first_hand(self,play_user):
         #play_user(数値)に分割
-        hand_num = int((len(self.deck_list))/play_user)#ここでselfいる?→いらんselfはオブジェクト化した際、インスタンスが引数として渡されルガこのとき必要な変数のみで良い
+        hand_num = int((len(self.deck_list))/play_user)
         hand_remain = int((len(self.deck_list))%play_user)
         k=0
         for _ in range(play_user):
@@ -44,5 +44,5 @@ class Deck:
             k+=hand_num
             self.hand_list.append(hand)
         logging.info(len(self.hand_list[0])+len(self.hand_list[1])+len(self.hand_list[2]))
-        return self.hand_list#これいらん説
+        return self.hand_list
 
