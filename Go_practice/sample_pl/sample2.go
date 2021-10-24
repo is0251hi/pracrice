@@ -9,4 +9,9 @@ func Def_normal() {
 	car.tire = "bridgestone"
 	car.speed = 40
 	fmt.Println(car.speed, car.tire)
+	only_package()
+}
+
+func only_package() {
+	println("only")
 }
