@@ -1,18 +1,7 @@
 package main
 
-import (
-	"fmt"
-)
-
-type Car struct {
-	tire  string
-	speed int
-}
+import mod "mymodule/sample_pl" //パッケージ前に名前付けられる、もしくは.で省略可能
 
 func main() {
-	var car Car
-	car.tire = "bridgestone"
-	car.speed = 40
-	fmt.Println("Hello World")
-	fmt.Println(car.speed, car.tire)
+	mod.Def_normal()
 }
