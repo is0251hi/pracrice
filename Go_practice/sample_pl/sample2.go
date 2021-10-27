@@ -5,6 +5,7 @@ import (
 )
 
 func Def_normal() {
+	defer fmt.Println("finish")
 	var car Car
 	car.tire = "bridgestone"
 	car.speed = 40
