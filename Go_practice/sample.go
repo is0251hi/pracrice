@@ -15,5 +15,6 @@ func main() {
 	fmt.Scanf("speed:", &s)
 	fmt.Scanf("tire:", &t)
 	var car = mod.CarFactory(t, s)
-	var handle mod.Handle = car
+	car.Run()
+	car.Dash()
 }

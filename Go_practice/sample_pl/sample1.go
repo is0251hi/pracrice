@@ -6,15 +6,11 @@ type Car struct {
 	tire  string
 	speed int
 }
-type Handle interface {
-	run()
-	stop()
-}
 
-func run(c Car) {
+func (c Car) Run() {
 	fmt.Println(c.speed)
 }
-func dash(c Car) {
+func (c Car) Dash() {
 	fmt.Println(c.speed * 2)
 }
 
