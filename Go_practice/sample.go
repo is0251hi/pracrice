@@ -16,6 +16,10 @@ func main() {
 	fmt.Scanf("tire:", &t)
 	var car = mod.CarFactory(t, s)
 	var c mod.Handle = car
+	var s_car mod.SuperCar = mod.SuperCar{
+		Car: car,
+	}
+	s_car.Dash()
 	c.Run()
 	c.Dash()
 }
