@@ -4,7 +4,7 @@ locals {
     AMI = "ami-06631ebafb3ae5d34"
     NAME = {
         a= "example_a"
-        b= "example_b"
+        b= "example_b_change"
     }
 }
 
@@ -12,7 +12,7 @@ provider "aws" {
     region = local.REGION
 }
 
-resource "aws_instance" "example" {
+resource "aws_instance" "ex" {
     for_each = local.NAME
     ami = local.AMI
     instance_type = local.INSTANCE_TYPE
